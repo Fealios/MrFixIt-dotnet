@@ -7,7 +7,7 @@ $(document).ready(function () {
     $('#claim-form').submit(function (event) {
         event.preventDefault();
         var Job = {};
-        var newData = $('#claim-form').serialize();
+        var newData = $('#claim-form').serializeArray();
         console.log(newData);
         console.log("hey");
     })
