@@ -27,3 +27,12 @@ body {
 .job-description{
     font-size: 18px;
 }
+
+.navbar-brand {
+    font-family: 'Roboto Slab', serif;
+}
+
+.page-title {
+    font-family: 'Roboto Slab', serif;
+    font-size: 50px;
+}
