@@ -33,8 +33,10 @@ namespace MrFixIt.Controllers
             return RedirectToAction("Index");
         }
 
+        //================all that is needed for adding claim =======================
         public IActionResult Claim(int id)
         {
+            //passses the full job to the page to be easily claimed.  no need to dig further
             var thisItem = db.Jobs.FirstOrDefault(items => items.JobId == id);
             return View(thisItem);
         }
@@ -43,9 +45,12 @@ namespace MrFixIt.Controllers
         public IActionResult Claim(Job job)
         {
             job.Worker = db.Workers.FirstOrDefault(i => i.UserName == User.Identity.Name);
+            //shifts the ownership in the DB to the CURRENT user. 
             db.Entry(job).State = EntityState.Modified;
+            //signals that the state has been modified. unfamiliar command.
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        //===========================================================================
     }
 }

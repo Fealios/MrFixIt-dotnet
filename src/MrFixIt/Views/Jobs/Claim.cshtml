@@ -7,13 +7,25 @@
 
 <h2>Would you like to do this job?</h2>
 <hr />
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.JobId)
-    @Html.HiddenFor(model => model.Title)
-    @Html.HiddenFor(model => model.Description)
+<form id="claim-form" data-url-action="@Url.Action("AjaxEdit", "Jobs")" >
+    <input type="hidden" value="@Model.JobId" />
+    <input type="hidden" value="@Model.Title" />
+    <input type="hidden" value="@Model.Description" />
+
+    @*bunch of hidden detail to pass into claim.*@
 
     <h4>@Model.Title</h4>
-    <input type="submit" value="Claim This Job" />
-}
+    <input  type="submit" value="Claim This Job" />
+
+
+</form>
 <p>@Html.ActionLink("Back to list", "Index")</p>
+
+
+
+@*@using (Html.BeginForm())
+{
+}
+@Html.HiddenFor(model => model.JobId)
+@Html.HiddenFor(model => model.Title)
+@Html.HiddenFor(model => model.Description)*@
