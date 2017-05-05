@@ -45,7 +45,6 @@ namespace MrFixIt.Controllers
         [HttpPost]
         public IActionResult Claim(Job job)
         {
-
             job.Worker = db.Workers.FirstOrDefault(i => i.UserName == User.Identity.Name);
             //shifts the ownership in the DB to the CURRENT user. 
             db.Entry(job).State = EntityState.Modified;
@@ -54,5 +53,29 @@ namespace MrFixIt.Controllers
             return RedirectToAction("Index");
         }
         //===========================================================================
+        public IActionResult Details(int id)
+        {
+            var thisJob = db.Jobs.FirstOrDefault(j => j.JobId == id);
+            return View(thisJob);
+        }
+
+
+        [HttpPost]
+        public IActionResult Progress(Job job)
+        {
+            job.Pending = true;
+            db.Entry(job).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Complete(Job job)
+        {
+            job.Completed = true;
+            db.Entry(job).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

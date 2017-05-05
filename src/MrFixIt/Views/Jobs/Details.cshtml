@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model MrFixIt.Models.Job
+
+<h1> Details </h1>
+<h2>@Model.Title</h2>
+<h3>@Model.Description</h3>
+
+@if (Model.Pending == false)
+{
+    <form id="job-details">
+        <input id="detail-jobId" type="hidden" value="@Model.JobId" />
+        <input id="detail-title" type="hidden" value="@Model.Title" />
+        <input id="detail-description" type="hidden" value="@Model.Description" />
+        <label> Set to "In Progress"</label>
+        <input id="set-progress" type="checkbox" value="true" />
+    </form>
+}
+else
+{
+    <form>
+        <input id="completed-jobId" type="hidden" value="@Model.JobId" />
+        <input id="completed-title" type="hidden" value="@Model.Title" />
+        <input id="completed-description" type="hidden" value="@Model.Description" />
+        <label>Set task to "Completed"</label>
+        <input id="set-complete" type="checkbox" value="true" />
+    </form>
+}
