@@ -11,25 +11,33 @@
 {
     @if(Job.Completed != true)
     {
+        <div class="job-holder">
+            <h3 class="job-title">@Job.Title</h3>
+            <h5 class="job-description">@Job.Description</h5>
 
-        <ul>
-            <li>@Job.Title</li>
-            <ul>
-                <li>@Job.Description</li>
-            </ul>
-            @if (Job.Worker == null)
+            @if(Job.Worker == null)
             {
-            <li class="btn">This job is unclaimed. @Html.ActionLink("Claim This Job", "Claim", new { @text = @Job.Title, id = Job.JobId })</li>
+                <p>
+                    This job is unclaimed.  @Html.ActionLink("Claim This Job", "Claim", new { @text = @Job.Title, id = Job.JobId })
+                </p>
             }
             else
             {
-                <li class="btn">This Job is claimed by @Job.Worker.FirstName @Job.Worker.LastName</li>
+                <p>
+                    This job is claimed by @Job.Worker.FirstName @Job.Worker.LastName
+                </p>
+                @if(Job.Pending == true)
+                {
+                    <p>
+                        Currently being worked on by @Job.Worker.FirstName
+                    </p>
+
+                }
             }
-            <li class="btn">@Html.ActionLink("Details", "Details", new { id = Job.JobId })</li>
-        </ul>
+            <h5>@Html.ActionLink("Details", "Details", new { id = Job.JobId })</h5>
 
-
-        <hr />
+            <hr class="separator"/>
+        </div>
 
     }
 }

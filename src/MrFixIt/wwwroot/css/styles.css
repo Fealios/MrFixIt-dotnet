@@ -1,4 +1,29 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+body {
     padding-top: 70px;
-    color: navy;
+}
+
+.job-holder {
+    padding-left: 10vw;
+    width: 70vw;
+    /*border: solid;*/
+}
+
+.separator {
+    width: 50vw;
+    height: .3vh;
+    border: none;
+    background: black;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, black));
+    margin-bottom: 6vh;
+}
+
+.job-title {
+    font-size: 40px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.job-description{
+    font-size: 18px;
 }
