@@ -7,7 +7,7 @@
 
 <h2>Would you like to do this job?</h2>
 <hr />
-<form id="claim-form" data-url-action="@Url.Action("AjaxEdit", "Jobs")" >
+<form id="claim-form" data-url-action="@Url.Action("Claim", "Jobs")" >
     <input name="Id" type="hidden" value="@Model.JobId" />
     <input name="Title" type="hidden" value="@Model.Title" />
     <input name="Description" type="hidden" value="@Model.Description" />
@@ -15,7 +15,7 @@
     @*bunch of hidden detail to pass into claim.*@
 
     <h4>@Model.Title</h4>
-    <button  type="submit">Claim this job </button>
+    <button type="submit">Claim this job </button>
 
 
 </form>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MrFixIt.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -44,6 +45,7 @@ namespace MrFixIt.Controllers
         [HttpPost]
         public IActionResult Claim(Job job)
         {
+
             job.Worker = db.Workers.FirstOrDefault(i => i.UserName == User.Identity.Name);
             //shifts the ownership in the DB to the CURRENT user. 
             db.Entry(job).State = EntityState.Modified;
